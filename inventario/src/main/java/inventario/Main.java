@@ -29,14 +29,15 @@ public class Main {
             System.out.println("==========================================");
 
             switch (option) {
+                // Listar Productos.
                 case 1 -> {
                     for (int i = 0; i < nombreProducto.size(); i++) {
                         imprimirProducto(i);
                     }
                 }
-
+                // Agregar un Producto.
                 case 2 -> {
-                    System.out.println("Agrega el producto:");
+                    System.out.println("Agrega los datos del producto:");
 
                     System.out.print("\tNombre: ");
                     nombreProducto.add(sc.nextLine());
@@ -47,18 +48,18 @@ public class Main {
                     System.out.print("\tStock: ");
                     stockProducto.add(sc.nextInt());
                 }
-
+                // Buscar Producto.
                 case 3 -> {
                     buscarProducto();
                 }
-
+                // Actualizar Producto.
                 case 4 -> {
                     int i = buscarProducto();
                     // Salimos de la opcion si no ecuentra el producto.
                     if (i == -1) {
                         break;
                     }
-
+                    // Solicitamos confirmacion del usuario. Si contesta algo distinto a 'y' o 'Y' lo tomaremos como un no.
                     System.out.println("==========================================");
                     System.out.println("Es este el producto que deseas actualizar? (y/n)");
                     String isCorrect = sc.nextLine();
@@ -66,27 +67,24 @@ public class Main {
                         System.out.println("Actualizar el producto nº " + i + ":");
 
                         System.out.print("\tNombre: ");
-                        nombreProducto.remove(i);
-                        nombreProducto.add(i, sc.nextLine());
+                        nombreProducto.set(i, sc.nextLine());
 
                         System.out.print("\tPrecio: ");
-                        precioProducto.remove(i);
-                        precioProducto.add(i, sc.nextDouble());
+                        precioProducto.set(i, sc.nextDouble());
 
                         System.out.print("\tStock: ");
-                        stockProducto.remove(i);
-                        stockProducto.add(i, sc.nextInt());
+                        stockProducto.set(i, sc.nextInt());
                     }
 
                 }
-
+                // Eliminar Producto. 
                 case 5 -> {
                     int i = buscarProducto();
                     // Salimos de la opcion si no ecuentra el producto.
                     if (i == -1) {
                         break;
                     }
-
+                    // Solicitamos confirmacion del usuario. Si contesta algo distinto a 'y' o 'Y' lo tomaremos como un no.
                     System.out.println("==========================================");
                     System.out.println("Es este el producto que deseas eliminar? (y/n)");
                     String isCorrect = sc.nextLine();
@@ -96,12 +94,12 @@ public class Main {
                         stockProducto.remove(i);
                     }
                 }
-
+                // Salir.
                 case 6 -> {
                     System.out.println("Saliendo del programa");
-                    System.exit(0);
+                    System.exit(0); // Salimos directamente del programa con codigo de error 0.
                 }
-
+                
                 default -> System.out.println("Opcion invalida.");
             }
         }
